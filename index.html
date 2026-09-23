@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sol Veliz — Portafolio de Marketing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16213D;
+    --ink-soft:#3B4A6B;
+    --paper:#F6F3EC;
+    --white:#FFFFFF;
+    --coral:#6B76AE;
+    --gold:#C98A4A;
+    --line:#DAD5C8;
+    --line-dark: rgba(246,243,236,0.22);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk',system-ui,sans-serif;
+    margin:0;
+    color:var(--ink);
+    font-weight:600;
+  }
+  .mono{
+    font-family:'IBM Plex Mono',monospace;
+  }
+  a{color:inherit;}
+  img{display:block;max-width:100%;}
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:var(--ink);
+    color:var(--paper);
+    border-bottom:1px solid var(--line-dark);
+  }
+  .nav-inner{
+    max-width:1080px; margin:0 auto; padding:16px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  @media (max-width:640px){ .nav-inner{padding:14px 20px;} }
+  .nav-name{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600; font-size:16px; color:var(--paper);
+    text-decoration:none; letter-spacing:0.01em;
+  }
+  .nav-links{ display:flex; gap:28px; }
+  .nav-links a{
+    font-size:14px; text-decoration:none; color:#C9D0E0;
+    border-bottom:1px solid transparent;
+    padding-bottom:2px;
+    transition:color .15s, border-color .15s;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{ color:var(--paper); border-color:var(--coral); }
+  @media (max-width:560px){ .nav-links{gap:16px;} .nav-links a{font-size:12.5px;} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:72px 0 56px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px; color:var(--ink-soft);
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(38px,6vw,58px);
+    line-height:1.04;
+    letter-spacing:-0.01em;
+    opacity:0; transform:translateY(14px);
+    animation:riseIn .7s ease-out forwards;
+  }
+  .hero .role{
+    font-size:clamp(17px,2.4vw,21px);
+    color:var(--ink-soft);
+    margin-top:10px;
+    font-weight:500;
+    opacity:0; transform:translateY(14px);
+    animation:riseIn .7s ease-out .1s forwards;
+  }
+  .hero p.lead{
+    max-width:600px;
+    margin-top:22px;
+    font-size:16.5px;
+    color:var(--ink-soft);
+    opacity:0; transform:translateY(14px);
+    animation:riseIn .7s ease-out .18s forwards;
+  }
+  @keyframes riseIn{ to{opacity:1; transform:translateY(0);} }
+
+  .index{
+    margin-top:44px;
+    border-top:1px solid var(--line);
+  }
+  .index a{
+    display:flex; align-items:baseline; gap:18px;
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+    text-decoration:none;
+    color:var(--ink);
+  }
+  .index a .num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px; color:var(--coral); min-width:26px;
+  }
+  .index a .title{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600; font-size:19px; flex:1;
+  }
+  .index a .client{
+    font-size:13.5px; color:var(--ink-soft);
+  }
+  .index a{ transition: padding-left .18s ease, background .18s ease; }
+  .index a:hover, .index a:focus-visible{ padding-left:8px; background:rgba(226,87,43,0.06); }
+
+  /* ---------- CASE SECTIONS ---------- */
+  .case{
+    padding:76px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .case.alt{ background:var(--white); }
+  .case-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap:24px; flex-wrap:wrap;
+    margin-bottom:34px;
+  }
+  .case-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:14px; color:var(--coral); margin-bottom:10px;
+  }
+  .case-head h2{
+    font-size:clamp(26px,3.6vw,36px);
+    letter-spacing:-0.01em;
+    max-width:640px;
+  }
+  .case-logo{
+    display:flex; align-items:center; gap:10px;
+    padding:8px 14px;
+    border:1px solid var(--line);
+    background:var(--paper);
+  }
+  .case.alt .case-logo{ background:var(--paper); }
+  .case-logo img{ height:34px; width:auto; }
+  .case-logo span{ font-size:12.5px; color:var(--ink-soft); font-family:'IBM Plex Mono',monospace; }
+
+  .meta-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+    border-top:1px solid var(--line);
+    border-left:1px solid var(--line);
+    margin-bottom:40px;
+  }
+  @media (max-width:760px){ .meta-grid{grid-template-columns:1fr 1fr;} }
+  .meta-item{
+    padding:16px 18px;
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .meta-item dt{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px; color:var(--ink-soft);
+    margin:0 0 6px;
+  }
+  .meta-item dd{
+    margin:0; font-size:14.5px; font-weight:500; line-height:1.35;
+  }
+
+  .objetivo{
+    border-left:3px solid var(--coral);
+    padding:4px 0 4px 22px;
+    margin:0 0 40px;
+    max-width:760px;
+  }
+  .objetivo .label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px; color:var(--coral); margin-bottom:8px;
+  }
+  .objetivo p{
+    font-size:19px; line-height:1.5; color:var(--ink);
+    margin:0; font-weight:500;
+  }
+
+  .block-title{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:14px; font-weight:600;
+    color:var(--ink-soft);
+    margin:0 0 16px;
+    padding-bottom:8px;
+    border-bottom:1px solid var(--line);
+  }
+
+  .rol-text{
+    max-width:720px; font-size:15.5px; color:var(--ink-soft);
+    margin-bottom:44px;
+  }
+  .rol-text strong{ color:var(--ink); }
+
+  .phases{ margin-bottom:48px; }
+  .phase{
+    display:grid;
+    grid-template-columns:60px 1fr;
+    gap:18px;
+    padding:20px 0;
+    border-top:1px solid var(--line);
+  }
+  .phase:last-child{ border-bottom:1px solid var(--line); }
+  .phase .pnum{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px; color:var(--gold); padding-top:3px;
+  }
+  .phase h4{
+    font-family:'Space Grotesk',sans-serif; font-size:16.5px; font-weight:600; margin:0 0 6px;
+  }
+  .phase p{ margin:0; font-size:14.5px; color:var(--ink-soft); max-width:620px; }
+
+  .action-list{ margin-bottom:48px; }
+  .action-item{ padding:20px 0; border-top:1px solid var(--line); }
+  .action-item:last-child{ border-bottom:1px solid var(--line); }
+  .action-item h4{ font-family:'Space Grotesk',sans-serif; font-size:16.5px; font-weight:600; margin:0 0 6px; }
+  .action-item p{ margin:0; font-size:14.5px; color:var(--ink-soft); max-width:640px; }
+
+  .kpi-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:48px; }
+  @media (max-width:700px){ .kpi-row{grid-template-columns:1fr;} }
+  .kpi-card{ border:1px solid var(--line); background:var(--white); padding:18px; }
+  .case.alt .kpi-card{ background:var(--paper); }
+  .kpi-card .k{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--ink-soft); margin-bottom:8px; display:block; }
+  .kpi-card .v{ font-size:14px; font-weight:500; color:var(--ink); }
+
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    margin-bottom:44px;
+  }
+  .gallery.two{ grid-template-columns:1.3fr 1fr; }
+  @media (max-width:700px){ .gallery, .gallery.two{grid-template-columns:1fr 1fr;} }
+  @media (max-width:480px){ .gallery, .gallery.two{grid-template-columns:1fr;} }
+  .gallery figure{
+    margin:0; border:1px solid var(--line); background:var(--white); overflow:hidden;
+  }
+  .gallery img{ width:100%; height:100%; object-fit:cover; aspect-ratio:4/5; }
+  .gallery .wide img{ aspect-ratio:16/10; }
+  .gallery figcaption{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px; color:var(--ink-soft);
+    padding:8px 10px; border-top:1px solid var(--line);
+  }
+
+  .links-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-bottom:12px;
+  }
+  @media (max-width:640px){ .links-grid{grid-template-columns:1fr;} }
+  .link-card{
+    border:1.5px dashed var(--line);
+    background:var(--paper);
+    padding:20px 20px;
+    display:flex; align-items:center; gap:14px;
+    text-decoration:none;
+    transition:border-color .15s, background .15s;
+  }
+  .case.alt .link-card{ background:var(--paper); }
+  .link-card:hover, .link-card:focus-visible{ border-color:var(--coral); border-style:solid; }
+  .link-card .play{
+    width:38px; height:38px; flex:none;
+    border-radius:50%;
+    border:1.5px solid var(--coral);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .link-card .play svg{ width:12px; height:12px; fill:var(--coral); }
+  .link-card .vtext{ min-width:0; }
+  .link-card .vtext strong{ display:block; font-size:14px; margin-bottom:2px; color:var(--ink); }
+  .link-card .vtext span{ font-size:12.5px; color:var(--ink-soft); }
+  .mosaic-group{ margin-bottom:24px; }
+  .mosaic-label{ font-size:13px; color:var(--coral); margin-bottom:10px; font-weight:500; }
+
+  .tags{
+    display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px;
+  }
+  .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    padding:6px 12px;
+    border:1px solid var(--line);
+    background:var(--white);
+    color:var(--ink-soft);
+  }
+  .note{
+    font-size:13px; color:var(--ink-soft); font-style:italic; margin-top:10px;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{ padding:76px 0; }
+  .about-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:56px;
+  }
+  @media (max-width:760px){ .about-grid{grid-template-columns:1fr; gap:36px;} }
+  .about h2{ font-size:clamp(24px,3vw,30px); margin-bottom:18px; }
+  .about p{ color:var(--ink-soft); font-size:15px; max-width:480px; }
+  .comp-list{ margin-top:22px; }
+  .comp-item{ padding:14px 0; border-top:1px solid var(--line); }
+  .comp-item:last-child{ border-bottom:1px solid var(--line); }
+  .comp-item .k{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--coral); display:block; margin-bottom:4px; }
+  .comp-item .v{ font-size:14px; color:var(--ink-soft); }
+  .edu{ margin-top:8px; }
+  .edu-item{ margin-bottom:14px; }
+  .edu-item .t{ font-size:14.5px; font-weight:600; }
+  .edu-item .s{ font-size:13px; color:var(--ink-soft); }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink); color:var(--paper);
+    padding:64px 0 40px;
+  }
+  footer h2{ color:var(--paper); font-size:clamp(26px,4vw,38px); max-width:520px; }
+  footer p{ color:#B9C1D6; max-width:480px; margin-top:14px; font-size:15px; }
+  .contact-row{
+    display:flex; gap:28px; flex-wrap:wrap; margin-top:32px;
+  }
+  .contact-row a{
+    text-decoration:none; color:var(--paper);
+    border-bottom:1px solid var(--coral);
+    padding-bottom:4px; font-size:15px;
+    font-family:'IBM Plex Mono',monospace;
+    transition:opacity .15s;
+  }
+  .contact-row a:hover, .contact-row a:focus-visible{ opacity:.75; }
+  .foot-bottom{
+    margin-top:56px; padding-top:20px; border-top:1px solid var(--line-dark);
+    font-size:12.5px; color:#8891A8; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+
+  :focus-visible{ outline:2px solid var(--coral); outline-offset:2px; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-name" href="#top" style="display:flex;align-items:center;gap:10px;">
+      <img src="images/logo-icono-nav.png" alt="" style="height:26px;width:auto;" aria-hidden="true">
+      Sol Veliz
+    </a>
+    <div class="nav-links">
+      <a href="#casos">Casos</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-eyebrow mono">Portafolio de proyectos — marketing &amp; comunicaciones</div>
+    <div style="display:flex;align-items:flex-end;gap:18px;">
+      <h1>Sol Veliz</h1>
+      <img src="images/firma-sol-veliz.png" alt="Firma de Sol Veliz" style="height:56px;width:auto;margin-bottom:4px;">
+    </div>
+    <div class="role">Comunicadora Social · Project Manager &amp; Ejecutiva de Cuentas</div>
+    <p class="lead">Superviso proyectos de marketing 360° de principio a fin: coordino equipos, clientes, contenido y proveedores para que un lanzamiento, una campaña o una colaboración con talento lleguen a tiempo, con mensaje claro y sin cabos sueltos. Estos son cuatro proyectos que he liderado en agencia y en organizaciones sin fines de lucro.</p>
+
+    <div class="index">
+      <a href="#caso-01"><span class="num mono">01</span><span class="title">Lanzamiento de producto</span><span class="client">Natural Premium — Resveratrol + NAD</span></a>
+      <a href="#caso-02"><span class="num mono">02</span><span class="title">Campaña 360°</span><span class="client">Centro Médico Maracay — Mes Rosa</span></a>
+      <a href="#caso-03"><span class="num mono">03</span><span class="title">Gestión de talento para marcas</span><span class="client">Natural Premium, CMM, Tío Rico y más</span></a>
+      <a href="#caso-04"><span class="num mono">04</span><span class="title">Estrategia de conversión &amp; liderazgo operativo</span><span class="client">AIESEC en Carabobo</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="casos">
+
+  <!-- ============ CASO 01 — RESVERATROL ============ -->
+  <section class="case" id="caso-01">
+    <div class="wrap">
+      <div class="case-head">
+        <div>
+          <div class="case-num mono">Caso 01 — Lanzamiento de producto</div>
+          <h2>Resveratrol + NAD de Natural Premium: de la expectativa al punto de venta</h2>
+        </div>
+        <div class="case-logo">
+          <img src="images/logo-natural-premium.png" alt="Logo Natural Premium">
+        </div>
+      </div>
+
+      <dl class="meta-grid">
+        <div class="meta-item"><dt>Cliente</dt><dd>Natural Premium — exclusivo Farmatodo</dd></div>
+        <div class="meta-item"><dt>Mi rol</dt><dd>Project Manager</dd></div>
+        <div class="meta-item"><dt>Duración</dt><dd>3 fases: 2 semanas previas + semana de lanzamiento + 1 mes de sostenimiento</dd></div>
+        <div class="meta-item"><dt>Canales</dt><dd>Instagram, punto de venta, vallas, distribuidores</dd></div>
+      </dl>
+
+      <div class="tags">
+        <span class="tag">Lanzamiento de producto</span>
+        <span class="tag">Estrategia digital</span>
+        <span class="tag">BTL</span>
+        <span class="tag">Trade marketing</span>
+        <span class="tag">Copywriting estratégico</span>
+      </div>
+
+      <div class="objetivo">
+        <div class="label mono">Contexto y desafío</div>
+        <p>Natural Premium buscaba introducir al mercado nacional su nuevo suplemento antiedad y regenerador celular, en alianza exclusiva con Farmatodo. El reto: educar al consumidor sobre el componente NAD, diferenciar el producto en la categoría wellness/skincare e impulsar la demanda tanto en digital como en el punto de venta físico.</p>
+      </div>
+
+      <div class="block-title">Mi rol en el proyecto</div>
+      <p class="rol-text">Como <strong>project manager</strong>, lideré el enlace entre la directiva de la marca y el equipo creativo de la agencia, asegurando el cumplimiento de tiempos y requerimientos, y estructuré el plan de lanzamiento en tres fases. Acompañé también la evolución de la propuesta de valor junto a la marca — que pasó de <em>"Bienestar desde la raíz"</em> a <em>"Más concentración, mayor efectividad"</em>, hasta el enfoque final centrado en el componente NAD.</p>
+
+      <div class="block-title">Fases de la campaña</div>
+      <div class="phases">
+        <div class="phase">
+          <div class="pnum mono">01</div>
+          <div>
+            <h4>Expectativa y educación</h4>
+            <p>Diseñé la parrilla de contenidos bajo el concepto "Cuídate por dentro y se notará por fuera": reels y carruseles educativos e historias interactivas.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="pnum mono">02</div>
+          <div>
+            <h4>Lanzamiento oficial</h4>
+            <p>Coordiné la creación de un Reel animado y otro grabado en la principal cadena de farmacias donde se vendería el producto, junto con el carrusel de beneficios.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="pnum mono">03</div>
+          <div>
+            <h4>Sostenimiento</h4>
+            <p>Designé un porcentaje mensual del contenido para hablar del producto y piezas de beneficio clave para feed. Diseñé además vallas en puntos de alto tráfico en la capital y un stand para un macroevento de salud con el producto como protagonista.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="objetivo" style="border-color:var(--gold);">
+        <div class="label mono" style="color:var(--gold);">Impacto</div>
+        <p>Posicionamiento efectivo del producto en el anaquel de Farmatodo, creación de una base inicial de clientes potenciales, y alineación de la comunicación omnicanal entre digital y BTL.</p>
+      </div>
+
+      <div class="block-title">Piezas de la campaña</div>
+      <div class="gallery">
+        <figure><img src="images/np-post-lanzamiento.jpg" alt="Post de lanzamiento — Nuevo Resveratrol + NAD Natural Premium"><figcaption>Post — lanzamiento oficial</figcaption></figure>
+        <figure><img src="images/np-post-bienestar-proposito.jpg" alt="Post de Instagram — Bienestar con propósito"><figcaption>Post — fase de lanzamiento</figcaption></figure>
+        <figure><img src="images/np-post-cuidate-por-dentro.jpg" alt="Post de Instagram — Cuídate por dentro"><figcaption>Post — integración skincare</figcaption></figure>
+        <figure><img src="images/np-post-beneficios-resveratrol.jpg" alt="Post de beneficios del Resveratrol"><figcaption>Post — fase de educación</figcaption></figure>
+        <figure><img src="images/np-post-teaser-expectativa.jpg" alt="Post de Instagram — Lo que no ves también importa"><figcaption>Post teaser — fase de expectativa</figcaption></figure>
+        <figure><img src="images/np-post-formula-antiedad.jpg" alt="Post fórmula antiedad Resveratrol + NAD"><figcaption>Post — fase de sostenimiento</figcaption></figure>
+      </div>
+
+      <div class="block-title">Videos de la campaña</div>
+      <div class="links-grid">
+        <a class="link-card" href="https://www.instagram.com/reel/DVyOinRjBhi/" target="_blank" rel="noopener">
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vtext"><strong>Reel animado de lanzamiento</strong><span>Ver en Instagram</span></div>
+        </a>
+        <a class="link-card" href="https://www.instagram.com/reel/DWCtXilDOeW/" target="_blank" rel="noopener">
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vtext"><strong>Reel grabado en Farmatodo I</strong><span>Ver en Instagram</span></div>
+        </a>
+        <a class="link-card" href="https://www.instagram.com/reel/DY9yPUHO1fd/" target="_blank" rel="noopener">
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vtext"><strong>Reel grabado en Farmatodo II</strong><span>Ver en Instagram</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CASO 02 — MES ROSA ============ -->
+  <section class="case alt" id="caso-02">
+    <div class="wrap">
+      <div class="case-head">
+        <div>
+          <div class="case-num mono">Caso 02 — Campaña 360°</div>
+          <h2>Mes Rosa: prevención y acompañamiento en todos los canales</h2>
+        </div>
+        <div class="case-logo">
+          <img src="images/logo-centro-medico-maracay.png" alt="Logo Centro Médico Maracay">
+        </div>
+      </div>
+
+      <dl class="meta-grid">
+        <div class="meta-item"><dt>Cliente</dt><dd>Centro Médico Maracay — Unidad de la Mujer</dd></div>
+        <div class="meta-item"><dt>Mi rol</dt><dd>Project Manager &amp; Coordinadora de Campaña 360°</dd></div>
+        <div class="meta-item"><dt>Duración</dt><dd>5 semanas — última de septiembre + octubre completo</dd></div>
+        <div class="meta-item"><dt>Canales</dt><dd>Redes, ads, eventos presenciales, material POP, alianzas médicas</dd></div>
+      </dl>
+
+      <div class="tags">
+        <span class="tag">Estrategia 360°</span>
+        <span class="tag">Eventos corporativos</span>
+        <span class="tag">Relaciones públicas</span>
+        <span class="tag">Activación BTL</span>
+        <span class="tag">Producción audiovisual</span>
+      </div>
+
+      <div class="objetivo">
+        <div class="label mono">Contexto y desafío</div>
+        <p>Concientizar sobre la prevención del cáncer de mama e impulsar el volumen de consultas y exámenes de despistaje en el Centro Médico Maracay durante octubre, afianzando a su Unidad de la Mujer como el centro de salud de referencia regional. Mensaje clave: prevención y esperanza.</p>
+      </div>
+
+      <div class="block-title">Mi rol en el proyecto</div>
+      <p class="rol-text">Articulé y supervisé la <strong>dirección operativa 360°</strong> de la campaña: el trabajo integrado de los equipos de diseño gráfico, producción audiovisual, tráfico de medios y copywriters. Coordiné la planificación BTL (producción e instalación del material gráfico promocional dentro de la clínica) y la logística del evento institucional presencial, conectando a la directiva médica con la comunidad. Además, hice seguimiento diario del flujo de mensajes, la interacción en redes y las citas agendadas, para ajustar la pauta publicitaria sobre la marcha.</p>
+
+      <div class="block-title">Cronograma de la campaña</div>
+      <div class="phases">
+        <div class="phase">
+          <div class="pnum mono">SEP</div>
+          <div>
+            <h4>Última semana de septiembre</h4>
+            <p>Comunicación directa con médicos (entrega de trípticos e invitación formal) y coordinación interna del speech y primer contacto.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="pnum mono">01–07</div>
+          <div>
+            <h4>Lanzamiento oficial</h4>
+            <p>Publicación del video conceptual y dinámica educativa con los usuarios (rompecabezas, flores y lazos).</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="pnum mono">08 OCT</div>
+          <div>
+            <h4>Live — "Más allá del diagnóstico"</h4>
+            <p>Transmisión en vivo por Instagram para acompañar y educar a la audiencia sobre el diagnóstico y la prevención.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="pnum mono">11 OCT</div>
+          <div>
+            <h4>Evento Rotaract — "Juntos por una vida color de rosa"</h4>
+            <p>Charla dirigida a la comunidad oncológica, en articulación con la organización Rotaract.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="pnum mono">14 OCT</div>
+          <div>
+            <h4>Clase abierta</h4>
+            <p>Acompañamiento emocional al paciente oncológico, dirigida a estudiantes y médicos.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="pnum mono">19 OCT</div>
+          <div>
+            <h4>RosaPower</h4>
+            <p>Bailoterapia de concientización y campaña de ads con contenido emocional, con apoyo y presencia de laboratorios aliados.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="pnum mono">21–27</div>
+          <div>
+            <h4>Cierre</h4>
+            <p>Documentación y recapitulación en redes, y medición de indicadores: alcance, participación en eventos, aumento en demanda de mamografías y encuestas a pacientes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="objetivo" style="border-color:var(--gold);">
+        <div class="label mono" style="color:var(--gold);">Impacto</div>
+        <p>Incremento notable en la captación de pacientes para despistajes preventivos en la Unidad de la Mujer, con un aumento del 15% en ventas durante el transcurso de la campaña y el mes siguiente, reforzando la reputación institucional del Centro Médico Maracay en la región.</p>
+      </div>
+
+      <div class="block-title">Piezas de la campaña</div>
+      <div class="gallery">
+        <figure><img src="images/cmm-invitacion-vistete-de-rosa.jpg" alt="Invitación al evento Vístete de Rosa, Centro Médico Maracay"><figcaption>Invitación — evento institucional</figcaption></figure>
+        <figure><img src="images/cmm-cronograma-mes-rosa.jpg" alt="Cronograma de eventos Mes Rosa"><figcaption>Cronograma de eventos</figcaption></figure>
+        <figure><img src="images/cmm-evento-rosapower.jpg" alt="Evento RosaPower, bailoterapia de concientización"><figcaption>Evento — RosaPower</figcaption></figure>
+        <figure><img src="images/cmm-pieza-mujer-eres-unica.jpg" alt="Pieza Mujer eres única, examen de mamografía"><figcaption>Pieza — llamado a la acción</figcaption></figure>
+      </div>
+
+      <div class="block-title">Videos de la campaña</div>
+      <div class="links-grid">
+        <a class="link-card" href="https://www.instagram.com/reel/DBUnDCfvcF4/" target="_blank" rel="noopener">
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vtext"><strong>Video animado sobre el Mes Rosa</strong><span>Ver en Instagram</span></div>
+        </a>
+        <a class="link-card" href="https://www.instagram.com/reel/C-6QR-OPtrJ/" target="_blank" rel="noopener">
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vtext"><strong>Conversatorio entre dos desconocidas</strong><span>Ver en Instagram</span></div>
+        </a>
+        <a class="link-card" href="https://www.instagram.com/reel/C_OzRYDvKs5/" target="_blank" rel="noopener">
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vtext"><strong>Testimonio</strong><span>Ver en Instagram</span></div>
+        </a>
+        <a class="link-card" href="https://www.instagram.com/reel/DBUuDYnseZO/" target="_blank" rel="noopener">
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vtext"><strong>Caminata y bailoterapia de concientización</strong><span>Ver en Instagram</span></div>
+        </a>
+        <a class="link-card" href="https://www.instagram.com/reel/DBBjHmyRpJ4/" target="_blank" rel="noopener">
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vtext"><strong>ONGs, comunidad oncológica y profesionales de la salud</strong><span>Ver en Instagram</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CASO 03 — TALENTOS ============ -->
+  <section class="case" id="caso-03">
+    <div class="wrap">
+      <div class="case-head">
+        <div>
+          <div class="case-num mono">Caso 03 — Gestión de talento para marcas</div>
+          <h2>Coordinación de microinfluencers, creadores y modelos para siete marcas</h2>
+        </div>
+      </div>
+
+      <dl class="meta-grid">
+        <div class="meta-item"><dt>Marcas</dt><dd>Natural Premium, CMM, Alimentos Doña Digna, Mosquitán, Tío Rico, Zoah, Pizza Mía, C.C. Unicentro Maracay</dd></div>
+        <div class="meta-item"><dt>Mi rol</dt><dd>Talent Manager</dd></div>
+        <div class="meta-item"><dt>Talento gestionado</dt><dd>Microinfluencers, creadores de contenido y modelos</dd></div>
+        <div class="meta-item"><dt>Canales</dt><dd>Instagram</dd></div>
+      </dl>
+
+      <div class="tags">
+        <span class="tag">Influencer marketing</span>
+        <span class="tag">Curaduría de perfiles</span>
+        <span class="tag">Negociación B2B</span>
+        <span class="tag">Dirección de producción en locación</span>
+      </div>
+
+      <div class="objetivo">
+        <div class="label mono">Contexto y desafío</div>
+        <p>Las marcas de la cartera —salud, wellness y consumo masivo— requerían humanizar sus mensajes, construir confianza inmediata y escalar el alcance orgánico mediante colaboraciones con voceros autorizados: médicos, creadores de estilo de vida y embajadores de marca.</p>
+      </div>
+
+      <div class="block-title">Mi rol en el proyecto</div>
+      <p class="rol-text">Evalué y seleccioné perfiles de creadores alineados con la identidad de cada cliente. Manejé las <strong>propuestas comerciales y la negociación B2B</strong> —entregables acordados (Reels, historias interactivas, asistencia a eventos) y la gestión de derechos de uso de imagen. Elaboré los creative briefs cuidando que el mensaje se comunicara con naturalidad, y presencié y coordiné rodajes en puntos de venta —por ejemplo, grabaciones en Farmatodo— y otras locaciones. Supervisé además la revisión previa de contenidos para asegurar el cumplimiento de las guías de marca.</p>
+
+      <div class="block-title">Marcas gestionadas</div>
+      <div class="tags">
+        <span class="tag">Natural Premium</span>
+        <span class="tag">Centro Médico Maracay</span>
+        <span class="tag">Alimentos Doña Digna</span>
+        <span class="tag">Mosquitán</span>
+        <span class="tag">Tío Rico</span>
+        <span class="tag">Zoah</span>
+        <span class="tag">Pizza Mía</span>
+        <span class="tag">C.C. Unicentro Maracay</span>
+      </div>
+
+      <div class="objetivo" style="border-color:var(--gold);margin-top:36px;">
+        <div class="label mono" style="color:var(--gold);">Impacto</div>
+        <p>Aumento significativo en la tasa de interacción (engagement rate) de las marcas, amplificación del alcance orgánico y mayor credibilidad en el lanzamiento de productos y servicios de salud.</p>
+      </div>
+
+      <div class="block-title" style="margin-top:40px;">Mosaico de colaboraciones</div>
+
+      <div class="mosaic-group">
+        <div class="mosaic-label mono">Tío Rico</div>
+        <div class="links-grid">
+          <a class="link-card" href="https://www.instagram.com/reel/DO60xnTCdOT/" target="_blank" rel="noopener">
+            <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="vtext"><strong>Reel 1</strong><span>Ver en Instagram</span></div>
+          </a>
+          <a class="link-card" href="https://www.instagram.com/reel/DO_3-uWjXkD/" target="_blank" rel="noopener">
+            <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="vtext"><strong>Reel 2</strong><span>Ver en Instagram</span></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="mosaic-group">
+        <div class="mosaic-label mono">Pizza Mía</div>
+        <div class="links-grid">
+          <a class="link-card" href="https://www.instagram.com/reel/DLiSuqYpLbl/" target="_blank" rel="noopener">
+            <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="vtext"><strong>Reel 1</strong><span>Ver en Instagram</span></div>
+          </a>
+          <a class="link-card" href="https://www.instagram.com/reel/DJ9mmMKNwF-/" target="_blank" rel="noopener">
+            <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="vtext"><strong>Reel 2</strong><span>Ver en Instagram</span></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="mosaic-group">
+        <div class="mosaic-label mono">Alimentos Doña Digna</div>
+        <div class="links-grid">
+          <a class="link-card" href="https://www.instagram.com/reel/DYQJm1xugvb/" target="_blank" rel="noopener">
+            <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="vtext"><strong>Reel 1</strong><span>Ver en Instagram</span></div>
+          </a>
+          <a class="link-card" href="https://www.instagram.com/reel/DYKP7akxI7Q/" target="_blank" rel="noopener">
+            <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="vtext"><strong>Reel 2</strong><span>Ver en Instagram</span></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="mosaic-group">
+        <div class="mosaic-label mono">Mosquitán</div>
+        <div class="links-grid">
+          <a class="link-card" href="https://www.instagram.com/reel/DOOqknVDie2/" target="_blank" rel="noopener">
+            <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="vtext"><strong>Reel 1</strong><span>Ver en Instagram</span></div>
+          </a>
+          <a class="link-card" href="https://www.instagram.com/reel/DYKFVYpOGmT/" target="_blank" rel="noopener">
+            <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="vtext"><strong>Reel 2</strong><span>Ver en Instagram</span></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="mosaic-group">
+        <div class="mosaic-label mono">Zoah</div>
+        <div class="links-grid">
+          <a class="link-card" href="https://www.instagram.com/reel/C4RQycOvOTT/" target="_blank" rel="noopener">
+            <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="vtext"><strong>Reel 1</strong><span>Ver en Instagram</span></div>
+          </a>
+          <a class="link-card" href="https://www.instagram.com/reel/C15ImuOOkiS/" target="_blank" rel="noopener">
+            <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="vtext"><strong>Reel 2</strong><span>Ver en Instagram</span></div>
+          </a>
+          <a class="link-card" href="https://www.instagram.com/reel/C2XS24Rrbit/" target="_blank" rel="noopener">
+            <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="vtext"><strong>Reel 3</strong><span>Ver en Instagram</span></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CASO 04 — AIESEC ============ -->
+  <section class="case alt" id="caso-04">
+    <div class="wrap">
+      <div class="case-head">
+        <div>
+          <div class="case-num mono">Caso 04 — Estrategia de conversión &amp; liderazgo operativo</div>
+          <h2>Rediseño operativo y embudo de captación en AIESEC Carabobo</h2>
+        </div>
+        <div class="case-logo">
+          <img src="images/logo-aiesec.png" alt="Logo AIESEC" style="height:34px;width:34px;">
+        </div>
+      </div>
+
+      <dl class="meta-grid">
+        <div class="meta-item"><dt>Organización</dt><dd>AIESEC en Carabobo</dd></div>
+        <div class="meta-item"><dt>Mi rol</dt><dd>Directora Ejecutiva de la oficina regional</dd></div>
+        <div class="meta-item"><dt>Duración</dt><dd>Enero 2026 — presente</dd></div>
+        <div class="meta-item"><dt>Áreas</dt><dd>Liderazgo organizacional, optimización de procesos, marketing de atracción</dd></div>
+      </dl>
+
+      <div class="tags">
+        <span class="tag">Liderazgo organizacional</span>
+        <span class="tag">Optimización de procesos</span>
+        <span class="tag">Marketing de atracción</span>
+        <span class="tag">Estrategia de conversión</span>
+      </div>
+
+      <div class="objetivo">
+        <div class="label mono">Contexto y desafío</div>
+        <p>Optimizar los procesos de reclutamiento y conversión de los programas de intercambio y liderazgo de AIESEC, mejorando el perfil de los postulantes y acortando los tiempos del embudo operativo.</p>
+      </div>
+
+      <div class="block-title">Líneas de acción</div>
+      <div class="action-list">
+        <div class="action-item">
+          <h4>Segmentación de mercado</h4>
+          <p>Rediseñé el perfil del participante ideal, orientando la comunicación digital hacia nichos de alto rendimiento a través de plataformas como LinkedIn.</p>
+        </div>
+        <div class="action-item">
+          <h4>Reestructuración del embudo operativo</h4>
+          <p>Optimicé las etapas de captación digital, seguimiento de prospectos y simulacros de entrevistas de selección para reducir la pérdida de candidatos.</p>
+        </div>
+        <div class="action-item">
+          <h4>Capacitación e involucramiento del equipo</h4>
+          <p>Coordiné e impartí espacios de formación en ventas, liderazgo y gestión de clientes para los miembros de la organización.</p>
+        </div>
+      </div>
+
+      <div class="block-title">Customer Flow de AIESEC</div>
+      <div style="max-width:480px;border:1px solid var(--line);background:var(--white);padding:18px;margin-bottom:18px;">
+        <img src="images/aiesec-customer-flow.png" alt="Customer Flow de AIESEC: Atracción, Consideración, Preparación, Experiencia y Post Experiencia" style="width:100%;height:auto;display:block;">
+      </div>
+      <p class="rol-text">Usé este ciclo como marco del rediseño operativo: Atracción (Visitante → Sign Up), Consideración (Sign Up → Aplicación → Aceptado → Aprobado), Preparación (Aprobado → Realizado), Experiencia (Realizado → Finalizado) y Post Experiencia (Finalizado → Completado), que retroalimenta una nueva Atracción. Cada tramo tiene su propia tasa de conversión, lo que permite ubicar con precisión dónde se pierden candidatos.</p>
+
+      <div class="block-title">Campaña Attraction 26.1 — "Be Real"</div>
+      <p class="rol-text">Alineé la estrategia local de captación al lineamiento regional Attraction 26.1, bajo el concepto <strong>"Be Real"</strong>: mostrar el impacto real de AIESEC a través de una comunicación auténtica, priorizando mensajes directos sobre las oportunidades disponibles.</p>
+      <div class="tags">
+        <span class="tag">Global Talent</span>
+        <span class="tag">Global Teacher</span>
+        <span class="tag">Global Volunteer</span>
+      </div>
+      <p class="rol-text" style="margin-top:14px;">Entregables mensuales mínimos definidos para el periodo: 4 comunicaciones en Telegram/WhatsApp, 4 en LinkedIn, 1 email marketing, 1 pauta mediática por trimestre, 1 evento de atracción al mes y actualización interdiaria del CRM.</p>
+
+      <div class="block-title">Indicadores</div>
+      <p class="rol-text">El indicador principal de gestión fueron las <strong>tasas de conversión</strong> entre cada etapa del Customer Flow —Visitante–Sign Up, Sign Up–Aplicación, Aplicación–Aceptado, Aceptado–Aprobado, Aprobado–Realizado, Realizado–Finalizado y Finalizado–Completado— para identificar cuellos de botella y priorizar esfuerzos por etapa.</p>
+
+      <div class="objetivo" style="border-color:var(--gold);">
+        <div class="label mono" style="color:var(--gold);">Impacto</div>
+        <p>Crecimiento sustancial en la conversión operativa durante los primeros 4 meses, posicionando al comité local como referente en eficiencia operativa y desarrollo de talento joven.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ SOBRE MÍ ============ -->
+<section class="about" id="sobre-mi">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <h2>Sobre mí</h2>
+        <p>Comunicadora Social y Project Manager certificada por Google, especializada en la supervisión de operaciones de marketing 360°, estrategia de contenido orgánico multiplataforma e influencer marketing. Dirijo proyectos de principio a fin cuidando plazos, calidad y relación con el cliente.</p>
+        <div class="edu">
+          <div class="edu-item">
+            <div class="t">Lic. en Comunicación Social — Mención Publicidad y RR.PP.</div>
+            <div class="s">Universidad Arturo Michelena · Mención de Honor, primer índice de grado de la promoción</div>
+          </div>
+          <div class="edu-item">
+            <div class="t">Certificado Profesional en Gestión de Proyectos</div>
+            <div class="s">Google, vía Coursera</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="comp-list">
+          <div class="comp-item">
+            <span class="k">Supervisión y operaciones</span>
+            <span class="v">Dirección de proyectos (PMO), control de KPIs, gestión de equipos multifuncionales, relación con clientes</span>
+          </div>
+          <div class="comp-item">
+            <span class="k">Estrategia digital y contenido</span>
+            <span class="v">Contenido orgánico multiplataforma (TikTok, Instagram, YouTube, Web, X), influencer marketing y tracking, lanzamientos de producto</span>
+          </div>
+          <div class="comp-item">
+            <span class="k">Paid media y analítica</span>
+            <span class="v">Lectura e interpretación de Ads, métricas de impacto, diagnóstico de marca</span>
+          </div>
+          <div class="comp-item">
+            <span class="k">Herramientas</span>
+            <span class="v">Asana, Notion, Google Workspace, Meta Ads Manager, AI Prompting</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER / CONTACTO ============ -->
+<footer id="contacto">
+  <div class="wrap">
+    <h2>¿Conversamos sobre tu próximo proyecto de marketing?</h2>
+    <p>Escríbeme por correo o LinkedIn — con gusto comparto más detalle de cualquiera de estos proyectos.</p>
+    <div class="contact-row">
+      <a href="mailto:solvelizcs@gmail.com">solvelizcs@gmail.com</a>
+      <a href="https://linkedin.com/in/solveliz" target="_blank" rel="noopener">linkedin.com/in/solveliz</a>
+    </div>
+    <div class="foot-bottom">
+      <span>Sol Veliz — Portafolio de proyectos</span>
+      <span>Venezuela</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
